@@ -3,9 +3,6 @@ const path = require('path');
 
 const folderMen = path.join(__dirname,'men');
 const folderWomen = path.join(__dirname,'women');
-const json =JSON.parse(data.toString());
-const folderOld = path.join(oldFolder, fileName);
-const folderNew = path.join(newFolder, fileName);
 
 function sortPeople (oldFolder,newFolder,gender){
     fs.readdir(oldFolder, (err, data) => {
@@ -15,12 +12,15 @@ function sortPeople (oldFolder,newFolder,gender){
         }
 
         data.forEach(fileName => {
+            const folderOld = path.join(oldFolder, fileName);
+            const folderNew = path.join(newFolder, fileName);
+
             fs.readFile(folderOld, (err, data) => {
                 if (err) {
                     console.log(err);
                     return;
                 }
-
+                const json =JSON.parse(data.toString());
                 if (json.gender === gender) {
                     fs.rename(folderOld,folderNew , (err) => {
                         if (err) {
