@@ -20,7 +20,9 @@ function sortPeople (oldFolder,newFolder,gender){
                     console.log(err);
                     return;
                 }
+
                 const json =JSON.parse(data.toString());
+
                 if (json.gender === gender) {
                     fs.rename(folderOld,folderNew , (err) => {
                         if (err) {
