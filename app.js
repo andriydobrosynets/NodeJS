@@ -32,8 +32,6 @@ const createFolders = (arrayUsers) => {
     });
 }
 
-
-
 const fileWriter = (newFile, data) => {
     fs.writeFile(newFile, data, err => {
         if (err) {
