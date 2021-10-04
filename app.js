@@ -27,10 +27,10 @@ const createFolders = (arrayUsers) => {
     });
 }
 
-const manOlder20Path = (file) => path.join(__dirname, 'manOlder20', file);
-const manYounger20Path = (file) => path.join(__dirname, 'manYounger20', file);
-const womanOlder20Path = (file) => path.join(__dirname, 'womanOlder20', file);
-const womanYounger20Path = (file) => path.join(__dirname, 'womanYounger20', file);
+const manOlder20 = (file) => path.join(__dirname, 'manOlder20', file);
+const manYounger20 = (file) => path.join(__dirname, 'manYounger20', file);
+const womanOlder20 = (file) => path.join(__dirname, 'womanOlder20', file);
+const womanYounger20 = (file) => path.join(__dirname, 'womanYounger20', file);
 
 const fileWriter = (newFile, data) => {
     fs.writeFile(newFile, data, err => {
@@ -43,13 +43,13 @@ const fileWriter = (newFile, data) => {
 const sort = (arrayUsers) => {
     arrayUsers.forEach(user => {
         if (user.age >= 20 && user.gender === 'male') {
-            fileWriter(manOlder20Path(`${user.name}.txt`), JSON.stringify(user));
+            fileWriter(manOlder20(`${user.name}.txt`), JSON.stringify(user));
         } else if (user.age < 20 && user.gender === 'male') {
-            fileWriter(manYounger20Path(`${user.name}.txt`), JSON.stringify(user));
+            fileWriter(manYounger20(`${user.name}.txt`), JSON.stringify(user));
         } else if (user.age >= 20 && user.gender === 'female') {
-            fileWriter(womanOlder20Path(`${user.name}.txt`), JSON.stringify(user));
+            fileWriter(womanOlder20(`${user.name}.txt`), JSON.stringify(user));
         } else {
-            fileWriter(womanYounger20Path(`${user.name}.txt`), JSON.stringify(user));
+            fileWriter(womanYounger20(`${user.name}.txt`), JSON.stringify(user));
         }
     });
 }
