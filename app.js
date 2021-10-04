@@ -11,10 +11,15 @@ const users = [
     { name: 'Ira', gender: 'female', age: 29 },
     { name: 'Ihor', gender: 'male', age: 14 },
     { name: 'Orest', gender: 'male', age: 10 },
-    { name: 'Panas', gender: 'male', age: 32 }
+    { name: 'Panas', gender: 'male', age: 12 }
 ];
 
-const namesOfFolders = ['manOlder20', 'manYounger20', 'womanOlder20', 'womanYounger20'];
+const foldersNames = ['manOlder20', 'manYounger20', 'womanOlder20', 'womanYounger20'];
+
+const manOlder20 = (file) => path.join(__dirname, 'manOlder20', file);
+const manYounger20 = (file) => path.join(__dirname, 'manYounger20', file);
+const womanOlder20 = (file) => path.join(__dirname, 'womanOlder20', file);
+const womanYounger20 = (file) => path.join(__dirname, 'womanYounger20', file);
 
 const createFolders = (arrayUsers) => {
     arrayUsers.forEach(name => {
@@ -27,10 +32,7 @@ const createFolders = (arrayUsers) => {
     });
 }
 
-const manOlder20 = (file) => path.join(__dirname, 'manOlder20', file);
-const manYounger20 = (file) => path.join(__dirname, 'manYounger20', file);
-const womanOlder20 = (file) => path.join(__dirname, 'womanOlder20', file);
-const womanYounger20 = (file) => path.join(__dirname, 'womanYounger20', file);
+
 
 const fileWriter = (newFile, data) => {
     fs.writeFile(newFile, data, err => {
@@ -54,5 +56,5 @@ const sort = (arrayUsers) => {
     });
 }
 
-createFolders(namesOfFolders);
+createFolders(foldersNames);
 sort(users);
