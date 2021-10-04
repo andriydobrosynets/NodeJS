@@ -23,7 +23,7 @@ const womanYounger20 = (file) => path.join(__dirname, 'womanYounger20', file);
 
 const createFolders = (arrayUsers) => {
     arrayUsers.forEach(name => {
-        let folderPath = path.join(__dirname, name)
+        const folderPath = path.join(__dirname, name);
         fs.mkdir(folderPath, {recursive: true}, (err) => {
             if (err) {
                 console.log(err);
