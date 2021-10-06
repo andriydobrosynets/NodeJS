@@ -5,10 +5,11 @@ const path = require('path');
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 
-const usersDataBase = path.join(__dirname, '../dataBase/users.json');
+const usersDataBase = path.join(process.cwd(), 'dataBase', 'users.json');
 
 const getContent = async function getContent() {
     const data = await readFile(usersDataBase);
+    
     return JSON.parse(data.toString());
 }
 
