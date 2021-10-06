@@ -5,10 +5,10 @@ const path = require('path');
 const readFile = promisify(fs.readFile);
 const writeFile = promisify(fs.writeFile);
 
-const usersDBPath = path.join(__dirname, '../dataBase/users.json');
+const usersDataBase = path.join(__dirname, '../dataBase/users.json');
 
 const getContent = async function getContent() {
-    const data = await readFile(usersDBPath);
+    const data = await readFile(usersDataBase);
     return JSON.parse(data.toString());
 }
 
@@ -26,7 +26,7 @@ module.exports = {
 
         users.push({ ...newUser, id: users.length + 1 });
 
-        await writeFile(usersDBPath, JSON.stringify(users));
+        await writeFile(usersDataBase, JSON.stringify(users));
     },
 
     deleteUser: async (userId) => {
@@ -34,7 +34,7 @@ module.exports = {
 
         const newArray = users.filter((user) => user.id !== +userId);
 
-        await writeFile(usersDBPath, JSON.stringify(newArray));
+        await writeFile(usersDataBase, JSON.stringify(newArray));
     },
 
 };
